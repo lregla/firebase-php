@@ -4,7 +4,7 @@ namespace Firebase\V3;
 
 use Firebase\Database;
 use Firebase\Database\ApiClient;
-use Firebase\Auth;
+use Firebase\Authentication;
 use Firebase\Exception\InvalidArgumentException;
 use Firebase\Http\Middleware;
 use Firebase\ServiceAccount;
@@ -33,6 +33,8 @@ class Firebase
      * @var Database
      */
     private $database;
+
+    private $auth;
 
     public function __construct(ServiceAccount $serviceAccount, UriInterface $databaseUri)
     {
@@ -119,9 +121,9 @@ class Firebase
         return new ApiClient($http);
     }
 
-    private function createAuth(): Auth
+    private function createAuth(): Authentication
     {
-        return new Auth();
+        return new Authentication();
     }
 
     /**

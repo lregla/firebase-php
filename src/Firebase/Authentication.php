@@ -7,7 +7,7 @@ use Firebase\V3\Auth;
 use GuzzleHttp\Psr7;
 use Psr\Http\Message\RequestInterface;
 
-class Auth
+class Authentication
 {
     public function __construct()
     {
