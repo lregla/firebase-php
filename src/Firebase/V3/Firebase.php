@@ -4,6 +4,7 @@ namespace Firebase\V3;
 
 use Firebase\Database;
 use Firebase\Database\ApiClient;
+use Firebase\Auth;
 use Firebase\Exception\InvalidArgumentException;
 use Firebase\Http\Middleware;
 use Firebase\ServiceAccount;
@@ -72,6 +73,15 @@ class Firebase
         return $this->database;
     }
 
+    public function getAuth(): Auth
+    {
+        if (!$this->auth) {
+            $this->auth = $this->createAuth();
+        }
+
+        return $this->auth;
+    }
+
     public function asUserWithClaims(string $uid, array $claims = []): Firebase
     {
         return $this->withCustomAuth(new CustomToken($uid, $claims));
@@ -107,6 +117,11 @@ class Firebase
         ]);
 
         return new ApiClient($http);
+    }
+
+    private function createAuth(): Auth
+    {
+        return new Auth();
     }
 
     /**
