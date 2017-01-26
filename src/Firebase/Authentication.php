@@ -16,7 +16,7 @@ class Authentication
 
     public function getUser(string $uid)
     {
-        return "getUser return";
+        return "getUser return" . $uid;
     }
 
     public function getUserByEmail(string $uid)

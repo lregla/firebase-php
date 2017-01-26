@@ -75,7 +75,7 @@ class Firebase
         return $this->database;
     }
 
-    public function getAuth(): Auth
+    public function getAuth(): Authentication
     {
         if (!$this->auth) {
             $this->auth = $this->createAuth();
